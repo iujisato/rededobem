@@ -1,0 +1,56 @@
+<div class="container-fluid city-image">
+  <div class="row">
+    <div id="polina" class="col-sm-6">
+      <h4 class="text-center">Login as a volunteer</h4>
+      <form class="form-horizontal">
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+          <div class="form-group has-success has-feedback">
+            <div class="col-sm-12">
+              <div class="form-inputs">
+                <%= f.input :email,
+                  autofocus: true,
+                  label: false,
+                  placeholder: 'Email',
+                  input_html: { class: 'form-control' } %>
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group has-success has-feedback">
+            <div class="col-sm-12">
+              <div class="form-inputs">
+                <%= f.input :password,
+                  label: false,
+                  placeholder: 'Password',
+                  input_html: { class: 'form-control' } %>
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class='text-right'>
+            <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+          </div>
+
+          <div class="text-center">
+            <%= f.button :submit,
+              "Log in",
+              class: 'btn btn-primary' %>
+          </div>
+
+          <div class='row text-center'>
+            <div class='col-sm-6'>
+              <%= render "devise/shared/devise_sign_up" %>
+            </div>
+
+            <div class='col-sm-6'>
+              <%= render "devise/shared/devise_recover_password" %>
+            </div>
+          </div>
+        <% end %>
+      </form>
+    </div>
+  </div>
+</div>
