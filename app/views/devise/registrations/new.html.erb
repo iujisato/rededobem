@@ -12,7 +12,19 @@
   <%= f.simple_fields_for :user_data do |user_data_f| %>
     <%= user_data_f.input :name %>
     <%= user_data_f.input :date_of_birth %>
+
+    <%= user_data_f.simple_fields_for :telephones do |telephone_f| %>
+      <%= telephone_f.input :landline_number,
+        as: :text,
+        input_html: { name: 'user[user_data_attributes][telephones][][landline][][number]' } %>
+
+      <%= telephone_f.input :cellphone_number,
+        as: :text,
+        input_html: { name: 'user[user_data_attributes][telephones][][cellphone][][number]' } %>
+      <%= check_box_tag 'user[user_data_attributes][telephones][][cellphone][][whatsapp]', 'true' %>
+    <% end %>
   <% end %>
+
 
   <div class="form-actions">
     <%= f.button :submit, "Sign up" %>

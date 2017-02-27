@@ -3,7 +3,7 @@ class CreateUserData < ActiveRecord::Migration[5.0]
     create_table :user_data do |t|
       t.string :name, null: false
       t.date :date_of_birth
-      t.jsonb :telephone
+      t.jsonb :telephones, default: []
       t.jsonb :education_level
       t.jsonb :status
       t.timestamps

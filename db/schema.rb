@@ -36,13 +36,13 @@ ActiveRecord::Schema.define(version: 20170224043913) do
   end
 
   create_table "user_data", force: :cascade do |t|
-    t.string   "name",            null: false
+    t.string   "name",                         null: false
     t.date     "date_of_birth"
-    t.jsonb    "telephone"
+    t.jsonb    "telephones",      default: []
     t.jsonb    "education_level"
     t.jsonb    "status"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.index ["education_level"], name: "index_user_data_on_education_level", using: :gin
     t.index ["status"], name: "index_user_data_on_status", using: :gin
   end

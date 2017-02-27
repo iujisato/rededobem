@@ -8,9 +8,9 @@ before_action :configure_sign_up_params, only: [:create]
     end
   end
 
-  # def create
-  #   super
-  # end
+  def create
+    super
+  end
 
   # def edit
   #   super
@@ -42,7 +42,12 @@ before_action :configure_sign_up_params, only: [:create]
         user_data_attributes: [
           :name,
           :date_of_birth,
-          :telephone,
+          {
+            telephones: [
+              { landline: [:number] },
+              { cellphone: [:number, :whatsapp] }
+            ]
+          },
           :education_level,
           :status,
           {
