@@ -15,13 +15,28 @@
 
     <%= user_data_f.simple_fields_for :telephones do |telephone_f| %>
       <%= telephone_f.input :landline_number,
-        as: :text,
+        as: :tel,
         input_html: { name: 'user[user_data_attributes][telephones][][landline][][number]' } %>
 
       <%= telephone_f.input :cellphone_number,
-        as: :text,
+        as: :tel,
         input_html: { name: 'user[user_data_attributes][telephones][][cellphone][][number]' } %>
-      <%= check_box_tag 'user[user_data_attributes][telephones][][cellphone][][whatsapp]', 'true' %>
+
+      <label>
+        <%= check_box_tag 'user[user_data_attributes][telephones][][cellphone][][whatsapp]', 'true' %>
+        Whatsapp
+      </label>
+    <% end %>
+
+    <%= user_data_f.simple_fields_for :education_level do |education_f| %>
+      <p>
+        <% ['college_degree', 'high_school_degree'].each do |degree| %>
+          <label>
+            <%= radio_button_tag "user[user_data_attributes][education_level]", "#{degree}" %>
+            <%= degree %>
+          </label>
+        <% end %>
+      </p>
     <% end %>
   <% end %>
 
